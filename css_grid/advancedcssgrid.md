@@ -39,6 +39,7 @@ Syntax example: `grid-template-areas` & `grid-area` assignment
                          "info services"
                          "footer footer";
     grid-template-rows: 300px 120px 800px 120px;
+    grid-template-columns: 1fr 3fr;
 }
 
 .header {
