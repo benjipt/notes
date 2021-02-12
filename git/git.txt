@@ -1,0 +1,38 @@
+Notes from Mastering Git, Thoughbot: https://thoughtbot.com/upcase/videos/git-managing-history
+
+Helpful options when viewing log:
+$ git log --oneline --decorate --graph --all
+
+Create alias 'SLA' for above options:
+$ git config --global alias.sla 'log --oneline --decorate --graph --all'
+$ git sla
+
+Another version of log:
+$ git log --pretty=format: '%C(yellow)%H%C(reset) - %an [%C(green)%ar%C(reset)] %s'
+
+Search through log for specific keyword (in commit?):
+$ git config --global alias.glog 'log -E -i --grep'
+$ git glog {keyword}
+
+Search through log for specific string:
+$ git log -S {String}
+
+Search through log for any commit changes related to specific file:
+$ git log --oneline -- {fileName}
+
+Search through log and see who made what commits:
+$ git blame {fileName}
+
+Drill down into specific hash to see changes:
+$ git show {hash}
+
+For compartmentalizing work in git commits
+$ git add --patch
+h for help
+y for staging
+s for split
+n for no
+
+Move commits in-between branches
+$ git cherry-pick {branch from}..{branch to}
+

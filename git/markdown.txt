@@ -1,0 +1,11 @@
+## What is Markdown?
+see [Markdown](www.markdownlink.com)
+
+> Markdown is a lightweight markup language
+----
+## List of tips
+1. *One asterisk Italicizes*
+2. **Two asterisks emphasize**
+
+https://guides.github.com/features/mastering-markdown/
+
