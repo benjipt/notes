@@ -4,6 +4,7 @@
 - [Constructor Method](#constructor-method)
 - [Getter Method](#getter-method)
 - [Inheritance](#inheritance)
+- [Static Methods](#static-methods)
 
 ---
 
@@ -47,11 +48,31 @@ Extending a parent class:
 ```js
 class Cat extends Animal {
   constructor(name, usesLitter) {
-    // super keyword calls the constructor of the parent class
+    // super keyword calls the constructor of the parent class.
     super(name);
+    // _usesLitter is unique to cat class, so we set it here.
     this._usesLitter = usesLitter;
   }
 }
 ```
 <br>
 
+### Static Methods
+Sometimes you will want a class to have methods that aren't available in individual instances, but that you can call directly from an instance of the class.
+```js
+class Animal {
+  constructor(name) {
+    this._name = name;
+    this._behavior = 0;
+  }
+ 
+  static generateName() {
+    const names = ['Angel', 'Spike', 'Buffy', 'Willow', 'Tara'];
+    const randomNumber = Math.floor(Math.random()*5);
+    return names[randomNumber];
+  }
+}
+
+// method call is appended to the Animal class rather than instance of class.
+console.log(Animal.generateName());
+```
