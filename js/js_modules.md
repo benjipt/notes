@@ -19,6 +19,7 @@ Modules are particularly useful for a number of reasons. By separating code with
 ### Exporting
 One way:
 ```js
+// via node.js
 let Menu = {};
 Menu.specialty = "Roasted Beet Burger with Mint Sauce";
 
@@ -27,6 +28,7 @@ module.exports = Menu;
 
 Another way:
 ```js
+// via node.js
 module.exports = {
   specialty: "Roasted Beet Burger with Mint Sauce",
   getSpecialty: function() {
@@ -35,10 +37,45 @@ module.exports = {
 };
 ```
 
+Default export:
+```js
+// via ES6
+let Menu = {};
+ 
+export default Menu;
+```
+
+#### Named export:
+```js
+// via ES6
+let specialty = '';
+function isVegetarian() {
+}; 
+function isLowSodium() {
+}; 
+ 
+export { specialty, isVegetarian };
+```
+_Or..._
+```js
+// via ES6
+export let specialty = '';
+export function isVegetarian() {
+}; 
+function isLowSodium() {
+};
+```
+
+w/ `as` keyword:
+```js
+
+
+When using ES6 syntax, we use export default in place of module.exports. Node.js doesn’t support export default by default, so module.exports is usually used for Node.js development and ES6 syntax is used for front-end development.
+
 ### Importing
 One way:
 ```js
-\\ require via node.js
+// via node.js
 const Menu = require('./menu.js');
  
 function placeOrder() {
@@ -48,3 +85,14 @@ function placeOrder() {
 placeOrder();
 ```
 
+Another way:
+```js
+// via ES6
+import Menu from './menu';
+```
+
+Named import:
+```js
+// via ES6
+import { specialty, isVegetarian } from './menu';
+```
