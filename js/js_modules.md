@@ -45,7 +45,7 @@ let Menu = {};
 export default Menu;
 ```
 
-#### Named export:
+Named export:
 ```js
 // via ES6
 let specialty = '';
@@ -68,7 +68,9 @@ function isLowSodium() {
 
 w/ `as` keyword:
 ```js
-
+// via ES6
+export { specialty as chefsSpecial, isVegetarian as isVeg, isLowSodium };
+```
 
 When using ES6 syntax, we use export default in place of module.exports. Node.js doesn’t support export default by default, so module.exports is usually used for Node.js development and ES6 syntax is used for front-end development.
 
@@ -95,4 +97,14 @@ Named import:
 ```js
 // via ES6
 import { specialty, isVegetarian } from './menu';
+```
+
+w/ `as` keyword:
+```js
+// via ES6
+import {isLowSodium as saltFree} from './Menu';
+
+||
+
+import * as Carte from './menu'
 ```
