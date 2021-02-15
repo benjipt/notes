@@ -7,6 +7,7 @@
 - [assert](#assert)
 - [Setup, Exercise, and Verify](#)
 - [Teardown](#teardown)
+- [Hooks](#hooks)
 
 
 ### Installing Mocha I:
@@ -113,3 +114,18 @@ Some common changes to an environment include
 - editing records in a database
 
 In some cases - the _teardown_ phase isn't needed because there are no conditions to reset.
+
+### Hooks
+A hook is a piece of code that is executed when a certain event happens. Hooks can be used to set and reset conditions like the setup and teardown phases do. In Mocha, a hook is written within a `describe` block.
+```js
+describe('example', () => {
+ 
+  afterEach(() => {
+    // teardown goes here
+  });
+ 
+  it('.sample', () => {
+    // test goes here
+  });
+});
+```
