@@ -3,8 +3,10 @@
 ## Index
 - [Installing Mocha I](#installing-mocha-i)
 - [Installing Mocha II](#installing-mocha-ii)
+- [desribe and it blocks](#describe-and-it-blocks)
 
-## Installing Mocha I:
+
+### Installing Mocha I:
 In project repo, `$ npm init` to create a package.json that can be used to manage packages for the project.
 ```
 $ npm init
@@ -29,7 +31,7 @@ project
 ```
 The `...` in the file structure represents other packages that are a dependency for Mocha.
 
-## Installing Mocha II
+### Installing Mocha II
 After installing MOcha as a dependency we can run it in two ways.
 The first *and more tedious) method is to call it directly from **node_modules**:
 ```
@@ -47,3 +49,26 @@ Now you can call Mocha with the following command:
 ```
 $ npm test
 ```
+
+### describe and it blocks
+In Mocha we group tests using the describe function and define tests using the it function. These two functions can be used to make your test suite complete, maintainable, and expressive in the following ways:
+
+- Structure your test suite: you can organize tests into nested groups that reflect the structure of your implementation code.
+
+- Provide informative messages: you can define your tests using human-readable strings.
+
+If you are testing a Math object with the method .max, you could use the following test code.
+```js
+describe('Math', () => {
+  describe('.max', () => {
+    it('returns the argument with the highest value', () => {
+      // Your test goes here
+    });
+    it('returns -Infinity when no arguments are provided', () => {
+      // Your test goes here
+    });
+  });
+});
+```
+
+Both the describe and it functions accept two parameters: a descriptive string and a callback function. Though the functions are flexible, they are commonly used in the structure above: nest describe blocks to resemble the structure of your implementation code and write individual tests in it blocks. This makes your test suite isolated, maintainable, and expressive.
