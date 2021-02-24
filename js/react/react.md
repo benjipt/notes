@@ -3,6 +3,7 @@
 ## Index
 - [Intro](#intro)
 - [JSX](#self-closing-tags)
+-  [Component Classes](#component-classes)
 
 ---
 
@@ -67,7 +68,7 @@ const listItems = strings.map(string => <li>{string}</li>);
 <ul>{listItems}</ul>
 ```
 
-### _keys_
+#### _keys_
 
 Use keys when you make a list in JSX (like an ID).
 ```js
@@ -77,3 +78,23 @@ Use keys when you make a list in JSX (like an ID).
   <li key="li-03">Example3</li>
 </ul>
 ```
+
+### Component Classes
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+ 
+class MyComponentClass extends React.Component {
+  render() {
+    return <h1>Hello world</h1>;
+  }
+};
+ 
+ReactDOM.render(
+  <MyComponentClass />,
+  document.getElementById('app')
+);
+```
+
+A `render()` function must have a `return` statement. However, that isn't all that it can have. A `render()` function can also be a fine place to put simple calculations that need to happen right before a component renders.
+
