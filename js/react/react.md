@@ -3,7 +3,8 @@
 ## Index
 - [Intro](#intro)
 - [JSX](#self-closing-tags)
--  [Component Classes](#component-classes)
+- [Component Classes](#component-classes)
+- [Component Lifecycle](#component-lifecycle)
 
 ---
 
@@ -79,6 +80,8 @@ Use keys when you make a list in JSX (like an ID).
 </ul>
 ```
 
+---
+
 ### Component Classes
 ```js
 import React from 'react';
@@ -98,3 +101,102 @@ ReactDOM.render(
 
 A `render()` function must have a `return` statement. However, that isn't all that it can have. A `render()` function can also be a fine place to put simple calculations that need to happen right before a component renders.
 
+#### Passing State Change Functions as Props
+```js
+class Name extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: '' };
+    this.handleNameChange = this.handleNameChange.bind(this);
+  }
+ 
+  handleNameChange(e) {
+    this.setState({
+      name: e.target.value,
+    });
+  }
+ 
+  render() {
+    return (
+      <div>
+        <input onChange={this.handleNameChange} />
+        <p>{this.state.name}</p>
+      </div>
+    );
+  }
+}
+```
+In this example, because this.setState() causes the Name component to re-render, any change to the `input` will update the Name component’s state, causing a new render and displaying the new state value to the `p` tag content.
+
+#### Event Handlers and State in React
+```js
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { text: '' };
+    this.handleChange = this.handleChange.bind(this);
+  }
+ 
+  handleChange(event) {
+    this.setState({
+      name: event.target.value,
+    });
+  }
+ 
+  render() {
+    return (
+      <div>
+        <input onChange={this.handleChange} value={this.state.text} />
+        <p>You typed {this.state.text}</p>
+      </div>
+    );
+  }
+}
+```
+In the example code, we use event.target.value to get the input’s value.
+
+#### Using Stateless Updaters and Presenters
+```js
+class StatefulParent extends React.Component {
+  constructor(props) {
+    super(props);
+    // Set up initial state here
+    // Bind handler functions here
+  }
+ 
+  handlerMethod(event) {
+    // Update state here
+  }
+ 
+  render() {
+    return (
+      <div>
+        <InputComponent onChange={handler} />
+        <DisplayComponent valueToDisplay={this.state.valueToDisplay} />
+      </div>
+    );
+  }
+}
+```
+A common React programming pattern is to use a parent stateful component to manage state and define state-updating methods. Then, it will render stateless child components.
+
+One or more of those child components will be responsible for updating the parent state (via methods passed as props). One or more of those child components will be responsible for displaying that state.
+
+In the example code, StatefulParent renders `InputComponent` to change its state and uses `DisplayComponent` to display it.
+
+---
+
+### Component Lifecycle
+The component lifecycle has three high-level parts:
+
+1. Mounting, when the component is being initialized and put into the DOM for the first time
+2. Updating, when the component updates as a result of changed state or changed props
+3. Unmounting, when the component is being removed from the DOM
+
+The order is:
+1. The constructor
+2. `render()`
+3. `componentDidMount()`
+4. `componentDidUpdate()`
+5. `componentWillUnmount()`
