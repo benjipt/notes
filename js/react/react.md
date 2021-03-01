@@ -5,6 +5,7 @@
 - [JSX](#self-closing-tags)
 - [Component Classes](#component-classes)
 - [Component Lifecycle](#component-lifecycle)
+- [Function Components](#function-components)
 
 ---
 
@@ -200,3 +201,27 @@ The order is:
 3. `componentDidMount()`
 4. `componentDidUpdate()`
 5. `componentWillUnmount()`
+
+---
+
+### Function Components
+```js
+// A component class written in the usual way:
+export class MyComponentClass extends React.Component {
+  render() {
+    return <h1>Hello world</h1>;
+  }
+}
+
+// The same component class, written as a stateless functional component:
+export const MyComponentClass = () => {
+  return <h1>Hello world</h1>;
+}
+
+// Works the same either way:
+ReactDOM.render(
+	<MyComponentClass />,
+	document.getElementById('app')
+);
+```
+To access `props`, give your function component a parameter named `props`.
