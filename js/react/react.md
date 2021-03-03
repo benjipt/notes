@@ -6,7 +6,7 @@
 - [Component Classes](#component-classes)
 - [Component Lifecycle](#component-lifecycle)
 - [Function Components](#function-components)
-
+- [Hooks](#hooks)
 ---
 
 ### Intro
@@ -225,3 +225,15 @@ ReactDOM.render(
 );
 ```
 To access `props`, give your function component a parameter named `props`.
+
+---
+
+### Hooks
+Built-in Hooks:
+- `useState()`
+- `useEffect()`
+- `useContext()`
+- `useReducer()`
+- `useRef()`
+- more [here](https://reactjs.org/docs/hooks-reference.html).
+
