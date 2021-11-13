@@ -34,3 +34,14 @@ const fetchUserById = (id) => {
   }
 }
 ```
+```js
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { fetchUser } from './api'
+const fetchUserById = createAsyncThunk(
+  'users/fetchUserById', // action type
+  async (arg, thunkAPI) => { // payload creator
+    const response = await fetchUser(arg);
+    return response.json();
+  }
+)
+```
